@@ -8,8 +8,14 @@ import java.util.stream.Collectors;
  */
 public class EncryptionDataLoaderDecorator implements IFileLoader {
 
+    /**
+     * 被装饰的 DataLoader
+     */
     private final IFileLoader dataLoader;
-    private EncryptionType encryptionType;
+    /**
+     * 加密类型
+     */
+    private final EncryptionType encryptionType;
 
     // 注入被装饰的 DataLoader
     public EncryptionDataLoaderDecorator(IFileLoader dataLoader,EncryptionType encryptionType) {
@@ -33,13 +39,12 @@ public class EncryptionDataLoaderDecorator implements IFileLoader {
     }
 
     private List<String> encrypt(List<String> data) {
-        // 简单使用 Base64 加密（可替换为更复杂的加密算法）
         IEncryptionStrategy build = EncryptionStrategyFactory.builder().setEncryptionType(encryptionType).build();
-        return data.stream().map(datum -> build.encrypt(datum)).collect(Collectors.toList());
+        return data.stream().map(build::encrypt).collect(Collectors.toList());
     }
 
     private List<String> decrypt(List<String> encryptedData) {
         IEncryptionStrategy build = EncryptionStrategyFactory.builder().setEncryptionType(encryptionType).build();
-        return encryptedData.stream().map(datum -> build.decrypt(datum)).collect(Collectors.toList());
+        return encryptedData.stream().map(build::decrypt).collect(Collectors.toList());
     }
 }

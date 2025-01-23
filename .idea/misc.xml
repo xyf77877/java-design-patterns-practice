@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JsBuildToolPackageJson" sorting="DEFINITION_ORDER" />
@@ -7,6 +8,8 @@
         <option value="$PROJECT_DIR$/abstract-factory/pom.xml" />
         <option value="$PROJECT_DIR$/pipeline/pom.xml" />
         <option value="$PROJECT_DIR$/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/decorator/pom.xml" />
+        <option value="$PROJECT_DIR$/adapter/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
